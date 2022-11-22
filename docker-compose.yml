@@ -1,0 +1,22 @@
+version: "3"
+services:
+  user-service:
+    image: nodejs
+    container_name: user-service
+    restart: always
+    build: .
+    ports:
+      - "7000:7000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - user-network
+
+networks:
+  user-network:
+    driver: bridge
+    name: user-network
+
+volumes:
+  node_modules:
